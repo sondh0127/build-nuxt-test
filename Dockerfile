@@ -12,6 +12,8 @@ COPY . .
 
 RUN pnpm install -r --offline
 
+RUN pnpm generate
+
 FROM registry.gviet.vn:5000/library/nginx:stable-alpine as production-stage
 
 COPY --from=build-stage /app/.output/public /usr/share/nginx/html
